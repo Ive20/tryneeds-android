@@ -29,7 +29,7 @@ public class Tools {
 	private static Dbhandler dbhandler;
 	public static String getsetting(String key)
 	{
-		SharedPreferences settings = MainApp.getMainApp().getSharedPreferences(MainApp.XIAOMUPACKAGE, 0);
+		SharedPreferences settings = MainApp.getMainApp().getSharedPreferences(MainApp.EZGOPACKAGE, 0);
 		String value="";
 		if(key=="isfirst")
 		{
@@ -44,9 +44,22 @@ public class Tools {
 	}
 	public static void putsetting(String key,String value)
 	{
-		SharedPreferences settings = MainApp.getMainApp().getSharedPreferences(MainApp.XIAOMUPACKAGE, 0);   
+		SharedPreferences settings = MainApp.getMainApp().getSharedPreferences(MainApp.EZGOPACKAGE, 0);   
 		SharedPreferences.Editor editor = settings.edit();   
 		editor.putString(key, value);   
 		editor.commit();   
 	}
+	public static AsyncHttpClient getAsyncHttpClient()
+    {
+    	if(asyncHttpClient==null)
+    	{
+    		asyncHttpClient= new AsyncHttpClient();
+    	}
+    	return asyncHttpClient;
+    	
+    }
+    public static AsyncHttpClient getNewAsyncHttpClient()
+    {
+    	return new AsyncHttpClient();
+    }
 }
